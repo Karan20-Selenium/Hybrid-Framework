@@ -1,0 +1,24 @@
+
+1. Create local git repository for your project
+
+git init  --> Create an empty git repository(Local repository)
+---------------------------------------------------------------------------------------------------------------------
+2. Connect your local git repository with Github(global) repository
+ 
+git remote add origin https://github.com/Karan20-Selenium/Hybrid-Framework.git
+
+---------------------------------------------------------------------------------------------------------------------
+Before doing commit first time we need to execute these below commands(Note - This command only first time)
+
+    git config --global user.name "Karan20-Selenium"
+    git config --global user.email "KaranKothavale20@gmail.com"
+---------------------------------------------------------------------------------------------------------------------
+3. git status (Vhecking status of file)
+
+---------------------------------------------------------------------------------------------------------------------
+4. git add -A
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,160 @@
+
+**********************Selenium Hybrid Framework*****************************
+
+(Python, Selenium, PyTest, Page Object Model, HTML Reports)
+
+# Step1: Create a new project and install required packages and plugins
+
+1.Selenium: Selenium Libraries
+2.Pytest: Python UnitTest Framework
+3.pytest.html: PyTest HTML Reports
+4.pytest-xdist: Run Test Parallel
+5.Openpyxl: MS Excel Support
+6.Allure-pytest: to generate allure reports
+
+--------------------------------------------------------------------------
+# Step2: Create Folder Structure
+--------------------------------------------------------------------------
+
+Project Name
+|
+pageObjects(Package)
+|
+testCases(Package)
+|
+utilities(Package)
+|
+TestData(Folder)
+|
+Configurations(Folder)
+|
+Logs(Folder)
+|
+Screenshots(Folder)
+|
+Reports(Folder)
+|
+Run.bat
+
+--------------------------------------------------------------------------
+# Step 3: Automating Login Test Case
+--------------------------------------------------------------------------
+3.1:Create Login Page Object Class Under "pageObjects"
+3.2:Create LoginTest.py under "testCases"
+3.3:Create conftest.py under "testCases"
+
+--------------------------------------------------------------------------
+# Step 4: capture screenshot on failures
+--------------------------------------------------------------------------
+
+4.1:Update Login Test with Screenshot under "testCases"
+
+--------------------------------------------------------------------------
+# Step 5: Read common values from ini file.
+--------------------------------------------------------------------------
+
+5.1: Add "config.ini" file in "Configurations" folder
+5.2: Create "readProperties.py" utility file under utilities package to read common data
+5.3: Replace hard coded values in Login test case
+
+--------------------------------------------------------------------------
+# Step 6: Adding logs to test case
+--------------------------------------------------------------------------
+
+6.1: Add customLogger.py under utilities package.
+6.2: Add logs to Login test case
+
+--------------------------------------------------------------------------
+# Step 7: Run Tests on Desired Browser/Cross Browser/Parallel
+--------------------------------------------------------------------------
+
+7.1: update conftest.py with required Fixtures which will accept command line
+     argument(browser name).
+7.2: Pass browser name as argument in command line
+
+*****To Run tests on desired browser
+pytest -s -v testCases/test_login.py --browser chrome
+pytest -s -v testCases/test_login.py --browser firefox
+
+*****To Run tests parallel
+pytest -s -v -n=3 testCases/test_login.py --browser chrome
+pytest -s -v -n=3 testCases/test_login.py --browser firefox
+
+--------------------------------------------------------------------------
+# Step 8: Generate pyTest HTML Reports
+--------------------------------------------------------------------------
+
+8.1: Update contest.py with pytest hooks
+8.2: To Generate HTML report run below command:
+
+pytest -s -v -n=3 --html=Reports\report.html testCases/test_login.py --browser chrome
+
+--------------------------------------------------------------------------
+# Step 9: Automating Data Driven Test Case
+--------------------------------------------------------------------------
+
+9.1: Prepare test data in Excel sheet.Place the excel file inside the TestData folder
+9.2: Create "ExcelUtils.py" utility class under utilities package.
+9.3: Create LoginDataDrivenTest under testCases
+9.4: Run the test cases
+
+--------------------------------------------------------------------------
+# Step 10: Adding new testcases
+--------------------------------------------------------------------------
+
+1. Add new customer
+2. Search customer by email
+3. Search customer by name
+
+--------------------------------------------------------------------------
+# Step 11: Grouping Tests
+--------------------------------------------------------------------------
+11.1: Grouping markers(Add markers to every test method)
+@pytest.mark.sanity
+@pytest.mark.regression
+
+11.2: Add Marker entries in pytest.ini file
+pytets.ini
+---
+(pytest)
+marker =
+  sanity
+  regression
+
+11.3: Select groups at run time
+
+-m "sanity"
+-m "regression"
+-m "sanity and regression"
+-m "sanity or regression"
+
+
+--------------------------------------------------------------------------
+# Step 12: Run Tests in Command Prompt & run.bat file
+--------------------------------------------------------------------------
+
+12.1: Create run.bat file
+
+pytest -s -v -m "sanity" --html=./Reports/report.html testCases/ --browser chrome
+
+12.2: Open command prompt as Administrator and then run "run.bat" file
+
+--------------------------------------------------------------------------
+# Step 13: Push the Code to Git and GitHub Repository
+--------------------------------------------------------------------------
+
+1st Round
+---------
+
+Initial steps(only one time)
+
+1) git init --> Create an Empty git repository(Local repository)
+
+2) git remote add origin"
+
+https://github.com/
+
+
+
+
+
